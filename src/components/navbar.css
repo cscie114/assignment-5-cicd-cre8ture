@@ -1,0 +1,53 @@
+/* Navbar.css */
+.navbar {
+    background-color: #333; /* Dark background for contrast */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border: 3px solid white; /* Border to emphasize the brutalist design */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 2rem;
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px; /* Slight curve for the underline */
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .navbar-links a:hover::after,
+  .navbar-links a:focus::after {
+    transform: scaleX(1); /* Underline appears on hover/focus */
+  }
+  
