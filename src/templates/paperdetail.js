@@ -1,58 +1,10 @@
-// import React from 'react';
-// import { graphql } from 'gatsby';
-// import { analyzeTextToGraphData } from '../libs/analyze_paragraphs';
-// import {createGraph} from '../libs/graph';
-// // This query will be executed by Gatsby to fetch the data for each paper
-// export const query = graphql`
-//   query($id: String!) {
-//     pubMedPaper(id: { eq: $id }) {
-//       title
-//       summary
-//       author
-//       terms
-//       nouns
-//     }
-//   }
-// `;
 
-// // The PaperDetail component receives the data as a prop and renders it
-// const PaperDetail = ({ data }) => {
-//   const { pubMedPaper } = data; // Destructure the fetched data
-
-//   return (
-//     <article>
-//       <h1>{pubMedPaper.title}</h1>
-//       <p><strong>Author:</strong> {pubMedPaper.author}</p>
-//       <section>
-//         <h2>Summary</h2>
-//         <p>{pubMedPaper.summary}</p>
-//       </section>
-//       <section>
-//         <h2>Key Terms</h2>
-//         <ul>
-//           {pubMedPaper.terms.map((term, index) => (
-//             <li key={index}>{term}</li>
-//           ))}
-//         </ul>
-//       </section>
-//       <section>
-//         <h2>Nouns</h2>
-//         <ul>
-//           {pubMedPaper.nouns.map((noun, index) => (
-//             <li key={index}>{noun}</li>
-//           ))}
-//         </ul>
-//       </section>
-//     </article>
-//   );
-// };
-
-// export default PaperDetail;
 
 import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { analyzeTextToGraphData } from '../libs/analyze_paragraphs';
 import { createGraph } from '../libs/graph';
+import Layout from '../components/layout';
 
 // This query will be executed by Gatsby to fetch the data for each paper
 export const query = graphql`
@@ -83,15 +35,18 @@ const PaperDetail = ({ data }) => {
   }, [pubMedPaper.summary]); // Redraw graph when summary changes
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <article style={{ flex: 1 }}>
+      <Layout>
+    <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
+    <article style={{ flex: 3, paddingRight: '20px' }}> {/* Increased flex factor and added some padding */}
         <h1>{pubMedPaper.title}</h1>
         <p><strong>Author:</strong> {pubMedPaper.author}</p>
         <section>
           <h2>Summary</h2>
           <p>{pubMedPaper.summary}</p>
         </section>
-        <section>
+    <div style={{ display: 'flex', flexDirection: 'row', padding: '10px', border: '1px solid blue' }}>
+
+        <section style={{paddingRight: "20px"}}>
           <h2>Key Terms</h2>
           <ul>
             {pubMedPaper.terms.map((term, index) => (
@@ -100,17 +55,23 @@ const PaperDetail = ({ data }) => {
           </ul>
         </section>
         <section>
-          <h2>Nouns</h2>
+          <h2>Phrases</h2>
           <ul>
             {pubMedPaper.nouns.map((noun, index) => (
               <li key={index}>{noun}</li>
             ))}
           </ul>
         </section>
+        </div>
       </article>
-      <div ref={graphRef} style={{ width: '800px', height: '600px', zIndex: '100'}}></div>
+      <div>
+      <div ref={graphRef} style={{ width: '600px', height: '700px', zIndex: '100'}}></div>
+      </div>
     </div>
+    </Layout>
+
   );
+
 };
 
 export default PaperDetail;
