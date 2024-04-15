@@ -9,6 +9,7 @@ export const query = graphql`
         node {
           id
           title
+          author
         }
       }
     }
@@ -21,7 +22,7 @@ const IndexPage = ({ data }) => (
     <h1>PubMed Papers</h1>
     {data.allPubMedPaper.edges.map(({ node }) => (
       <div key={node.id}>
-        <h2>{node.title}</h2>
+        <h2>{node.title + ' '} <span style={{color:'white'}}>|</span> {' ' + node.author}</h2>
         <Link to={node.id}>
           <button>View Paper</button>
         </Link>
