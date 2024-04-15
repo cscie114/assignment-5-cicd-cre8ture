@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allPubMedPaper.edges.forEach(({ node }) => {
     createPage({
       path: node.id,
-      component: path.resolve(`./src/templates/paperDetail.js`),
+      component: path.resolve(`./src/templates/paperdetail.js`),
       context: {
         id: node.id,
         title: node.title,
