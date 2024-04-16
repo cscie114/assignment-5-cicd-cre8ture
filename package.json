@@ -8,6 +8,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@netlify/functions": "^2.6.0",
     "compromise": "^14.13.0",
     "compromise-sentences": "^0.3.0",
     "d3": "^7.9.0",
