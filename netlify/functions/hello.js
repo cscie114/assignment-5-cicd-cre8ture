@@ -1,4 +1,7 @@
-// netlify/functions/hello.mjs
-export default async (req, context) => {
-    return new Response("Hello, world!");
+// netlify/functions/hello.js
+exports.handler = async (event, context) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello, world!" })
   };
+};
