@@ -62,11 +62,11 @@ Here's a more detailed description:
     ```
 
 For Github that would be:
-```
-github add --all
-github commit -m "your message"
-github push --all
-```
+    ```bash 
+    github add --all
+    github commit -m "your message"
+    github push --all
+    ```
 
 3. **Define the build job**: In the `jobs` section of your workflow file, define a job that sets up your environment, installs dependencies, and builds your application. 
 
@@ -78,7 +78,7 @@ github push --all
           - uses: actions/checkout@v2
           - uses: actions/setup-node@v2
             with:
-              node-version: '14'
+              node-version: '<fill in your Node version>'
           - run: npm ci
           - run: npm run build
     ```
@@ -97,11 +97,35 @@ github push --all
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
     ```
+- Note: 
+ - you can also use the more modern approach, to use the netlify CLI tool: 
 
+ ```yaml
+       - run: npm ci
+      - run: npm install babel-eslint --save-dev
+      - run: npm run lint
+      - run: npm test
+      - name: Install Netlify CLI
+        run: npm install netlify-cli -g
+      - name: Build site
+        run: npm run build
+      - name: Deploy to Netlify
+        run: netlify deploy --prod --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --dir=./public
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+```
 5. **Add Netlify secrets to your repository**: In your repository settings, add your Netlify auth token and site ID as secrets. These will be used by the `nwtgck/actions-netlify` action to authenticate with Netlify and deploy your site. [Source](https://github.com/marketplace/actions/netlify-actions)
 
 6. **Push your changes**: Once you've set up your workflow, push your changes to your repository. Your workflow will run automatically on every push to your main branch and deploy your site to Netlify.
 
 Replace the placeholders in the above code snippets with your actual values. For example, replace `'14'` with your actual Node.js version, and replace `'./public'` with your actual build output directory.
+
+## Serverless functions
+Serverless functions are functions that live on the cloud and are ready on demand without the heaviness of a backend that you have to manage.
+
+I created two different functions. One using .js and the other .mjs.
+They can be reached at either :
+[https://researchef.netlify.app/.netlify/functions/hello](https://researchef.netlify.app/.netlify/functions/hello)
+[https://researchef.netlify.app/.netlify/functions/hello2](https://researchef.netlify.app/.netlify/functions/hello2)
 
 
