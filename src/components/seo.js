@@ -6,6 +6,7 @@
  */
 
 import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
 
 function Seo({ description, title, children }) {
   const { site } = useStaticQuery(
