@@ -15,12 +15,11 @@ jobs:
       - run: npm install babel-eslint --save-dev
       - run: npm run lint
       - run: npm test
-      - name: Copy functions to public directory
-        run: cp -r netlify/functions public/
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
           publish-dir: './public'
+          functions-dir: './netlify/functions'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
