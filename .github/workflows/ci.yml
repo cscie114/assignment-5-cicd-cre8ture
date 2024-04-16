@@ -23,7 +23,7 @@ jobs:
     - run: npm install babel-eslint --save-dev
     - run: npm run lint
     - run: npm test
-      - name: Build and Deploy to Netlify
+    - name: Build and Deploy to Netlify
       uses: netlify/actions/cli@master
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
