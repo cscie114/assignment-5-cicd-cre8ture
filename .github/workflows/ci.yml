@@ -1,16 +1,12 @@
-name: Build and Deploy to Netlify
-on:
-  push:
-  pull_request:
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '20.11.0'
       - run: npm ci
       - run: npm install babel-eslint --save-dev
       - run: npm run lint
