@@ -98,7 +98,7 @@ github push --all
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
     ```
 
-5. **Add Netlify secrets to your repository**: In your repository settings, add your Netlify auth token and site ID as secrets. These will be used by the `nwtgck/actions-netlify` action to authenticate with Netlify and deploy your site.
+5. **Add Netlify secrets to your repository**: In your repository settings, add your Netlify auth token and site ID as secrets. These will be used by the `nwtgck/actions-netlify` action to authenticate with Netlify and deploy your site. [Source](https://github.com/marketplace/actions/netlify-actions)
 
 6. **Push your changes**: Once you've set up your workflow, push your changes to your repository. Your workflow will run automatically on every push to your main branch and deploy your site to Netlify.
 
