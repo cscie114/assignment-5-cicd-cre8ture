@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Header from '../src/components/header'; // Adjust the import path as necessary
+import Navbar from '../src/components/Navbar.js'; 
 
-describe('Header', () => {
+describe('Navbar', () => {
   it('renders and returns HTML', () => {
-    const { container } = render(<Header />);
+    const { container } = render(<Navbar />);
 
     expect(container.innerHTML).toBeTruthy();
 
